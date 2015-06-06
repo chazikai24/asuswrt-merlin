@@ -201,6 +201,13 @@ function show_etherstate(){
 					tmpPort = "4";	// This is the LAN 4 port from QTN
 					devicename = '<span class="ClientName">&lt;unknown&gt;</span>';
 				}
+			}else if (based_modelid == "R6300V2") {
+				if (tmpPort == "4"){
+					tmpPort = "0";
+				}
+				else{
+					tmpPort = 4 - tmpPort;
+				}
 			}
 			if (tmpPort == "0") {
 				port = "WAN";
