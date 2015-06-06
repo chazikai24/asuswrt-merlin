@@ -887,6 +887,7 @@ void generate_switch_para(void)
 		case MODEL_RTN18U:						/* 0  1  2  3  4 */
 		case MODEL_RTAC53U:
 		case MODEL_EA6900:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		case MODEL_WS880:
 		{				/* WAN L1 L2 L3 L4 CPU */	/*vision: WAN L1 L2 L3 L4 */
@@ -1639,6 +1640,7 @@ void ether_led()
 		eval("et", "robowr", "0", "0x18", "0x01ff");
 		eval("et", "robowr", "0", "0x1a", "0x01ff");
 		break;
+	case MODEL_R6300V2:
 	case MODEL_R7000:
 		eval("et", "robowr", "0", "0x10", "0x3000");
 		eval("et", "robowr", "0", "0x12", "0x78");
@@ -1809,6 +1811,7 @@ reset_mssid_hwaddr(int unit)
 				break;
 			case MODEL_RTN66U:
 			case MODEL_RTAC66U:
+			case MODEL_R6300V2:
 			case MODEL_R7000:
 				snprintf(macaddr_str, sizeof(macaddr_str), "pci/%d/1/macaddr", unit + 1);
 				break;
@@ -1976,6 +1979,7 @@ void init_wl(void)
 		case MODEL_RTAC3100:
 		case MODEL_RTAC5300:
 		case MODEL_EA6900:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		case MODEL_WS880:
 			set_bcm4360ac_vars();
@@ -2078,6 +2082,7 @@ void fini_wl(void)
 		(get_model() == MODEL_RPAC68U) ||
 		(get_model() == MODEL_RTAC68U) ||
 		(get_model() == MODEL_EA6900) ||
+		(get_model() == MODEL_R6300V2) ||
 		(get_model() == MODEL_R7000) ||
 		(get_model() == MODEL_WS880) ||
 		(get_model() == MODEL_DSLAC68U) ||
@@ -2247,6 +2252,7 @@ void init_syspara(void)
 			nvram_set("1:macaddr", s);
 			break;
 
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			if (!nvram_get("et0macaddr"))	//eth0, eth1
 				nvram_set("et0macaddr", "00:22:15:A5:03:00");
@@ -2298,7 +2304,7 @@ void init_others(void)
 {
 	int model = get_model();
 
-	if (model == MODEL_RTAC56U || model == MODEL_RTAC56S || model == MODEL_RTAC3200 || model == MODEL_RTAC68U || model == MODEL_EA6900 || model == MODEL_R7000 || model == MODEL_WS880 || model == MODEL_RPAC68U || model == MODEL_RTAC87U || model == MODEL_RTAC88U || model == MODEL_RTN18U) {
+if (model == MODEL_RTAC56U || model == MODEL_RTAC56S || model == MODEL_RTAC3200 || model == MODEL_RTAC68U || model == MODEL_EA6900 || model == MODEL_R6300V2 || model == MODEL_R7000 || model == MODEL_WS880 || model == MODEL_RPAC68U || model == MODEL_RTAC87U || model == MODEL_RTAC88U || model == MODEL_RTN18U) {
 #ifdef SMP
 		int fd;
 
@@ -2647,6 +2653,7 @@ int set_wltxpower()
 		&& (model != MODEL_RTAC3200)
 		&& (model != MODEL_RTN18U)
 		&& (model != MODEL_EA6900)
+		&& (model != MODEL_R6300V2)
 		&& (model != MODEL_R7000)
 		&& (model != MODEL_WS880))
 		//&& (model != MODEL_RTAC5300)
@@ -2708,6 +2715,7 @@ int set_wltxpower()
 
 			case MODEL_RTN66U:
 			case MODEL_RTAC66U:
+			case MODEL_R6300V2:
 			case MODEL_R7000:
 				snprintf(prefix2, sizeof(prefix2), "pci/%d/1/", unit + 1);
 				break;
@@ -4804,6 +4812,7 @@ int set_wltxpower()
 				break;
 
 			case MODEL_EA6900:
+			case MODEL_R6300V2:
 			case MODEL_R7000:
 			case MODEL_WS880:
 				if (set_wltxpower_once) {
@@ -5522,6 +5531,7 @@ void generate_wl_para(int unit, int subunit)
 					get_model() == MODEL_RPAC68U ||
 					get_model() == MODEL_RTAC68U ||
 					get_model() == MODEL_EA6900 ||
+					get_model() == MODEL_R6300V2 ||
 					get_model() == MODEL_R7000 ||
 					get_model() == MODEL_WS880 ||
 					get_model() == MODEL_DSLAC68U ||
@@ -5668,7 +5678,7 @@ void generate_wl_para(int unit, int subunit)
 		nvram_set(strcat_r(prefix, "net_reauth", tmp), tmp2);
 
 		if (nvram_match(strcat_r(prefix, "nband", tmp), "1")) {
-			if (	((get_model() == MODEL_RTAC68U || get_model() == MODEL_EA6900 || get_model() == MODEL_R7000 || get_model() == MODEL_WS880 || get_model() == MODEL_RPAC68U || get_model() == MODEL_DSLAC68U) &&
+if (	((get_model() == MODEL_RTAC68U || get_model() == MODEL_EA6900 || get_model() == MODEL_R6300V2 || get_model() == MODEL_R7000 || get_model() == MODEL_WS880 || get_model() == MODEL_RPAC68U || get_model() == MODEL_DSLAC68U) &&
 				(nvram_match(strcat_r(prefix, "reg_mode", tmp), "off") || nvram_match(strcat_r(prefix, "reg_mode", tmp), "d")) &&
 			      ((nvram_match(strcat_r(prefix, "country_code", tmp), "EU") &&
 				nvram_match(strcat_r(prefix, "country_rev", tmp), "13")) /*||
@@ -6338,6 +6348,7 @@ set_wan_tag(char *interface) {
 	case MODEL_RTAC68U:	/* WAN L1 L2 L3 L4 CPU */
 	case MODEL_RTN18U:	/* WAN L1 L2 L3 L4 CPU */
 	case MODEL_EA6900:
+	case MODEL_R6300V2:
 	case MODEL_R7000:
 	case MODEL_WS880:
 		if (wan_vid) { /* config wan port */

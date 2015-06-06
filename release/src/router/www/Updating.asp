@@ -21,6 +21,7 @@
 			|| parent.based_modelid == "RT-AC66U"
 			|| parent.based_modelid == "RT-AC68U"
 			|| parent.based_modelid == "EA6900"
+			|| parent.based_modelid == "R6300V2"
 			|| parent.based_modelid == "R7000"
 			|| parent.based_modelid == "WS880"
 			|| parent.based_modelid == "RT-AC68U_V2"

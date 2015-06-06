@@ -455,7 +455,7 @@ int do_led_control(int which, int mode)
 
 	set_gpio(gpio_nr, v);
 
-#if defined(R7000)
+#if defined(R6300V2) || defined(R7000)
 	if (gpio_nr == 1) { // LED_POWER
 		set_gpio(2, v);
 		set_gpio(3, v ^ 1);

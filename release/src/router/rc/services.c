@@ -4804,6 +4804,7 @@ check_ddr_done:
 		case MODEL_RPAC68U:
 		case MODEL_RTAC68U:
 		case  MODEL_EA6900:
+		case MODEL_R6300V2:
 		case  MODEL_R7000:
 		case  MODEL_WS880:
 		case MODEL_DSLAC68U:
@@ -6854,7 +6855,7 @@ void setup_leds()
 	model = get_model();
 
 	if (nvram_get_int("led_disable") == 1) {
-		if ((model == MODEL_RTAC56U) || (model == MODEL_RTAC56S) || (model == MODEL_RTAC68U) || (model == MODEL_EA6900) || (model == MODEL_R7000) || (model == MODEL_WS880) || (model == MODEL_RTAC87U) || (model == MODEL_RTAC3200)) {
+		if ((model == MODEL_RTAC56U) || (model == MODEL_RTAC56S) || (model == MODEL_RTAC68U) || (model == MODEL_EA6900) || (model == MODEL_R6300V2)  || (model == MODEL_R7000) || (model == MODEL_WS880) || (model == MODEL_RTAC87U) || (model == MODEL_RTAC3200)) {
 			setAllLedOff();
 			if (model == MODEL_RTAC87U)
 				led_control_atomic(LED_5G, LED_OFF);
@@ -6881,7 +6882,7 @@ void setup_leds()
 
 		if (nvram_match("wl1_radio", "1")) {
 			led_control_atomic(LED_5G_FORCED, LED_ON);
-#if defined(WS880) || defined(R7000)
+#if defined(WS880) || defined(R7000) || defined(R6300V2)
 			led_control_atomic(LED_5G, LED_ON);
 #endif
 		}

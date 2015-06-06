@@ -168,6 +168,7 @@ setMAC_2G(const char *mac)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			memset(cmd_l, 0, 64);
@@ -252,6 +253,7 @@ setMAC_5G(const char *mac)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			memset(cmd_l, 0, 64);
@@ -349,6 +351,7 @@ setCountryCode_2G(const char *cc)
 			eval("nvram", "set", cmd );
 			puts(nvram_safe_get("0:ccode"));
 			break;
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			sprintf(cmd, "asuscfepci/1/1/ccode=%s", cc);
 			eval("nvram", "set", cmd );
@@ -405,6 +408,7 @@ setCountryCode_5G(const char *cc)
 			eval("nvram", "set", cmd );
 			puts(nvram_safe_get("1:ccode"));
 			break;
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			sprintf(cmd, "asuscfepci/2/1/ccode=%s", cc);
 			eval("nvram", "set", cmd );
@@ -480,6 +484,7 @@ setRegrev_2G(const char *regrev)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			memset(cmd, 0, 32);
@@ -548,6 +553,7 @@ setRegrev_5G(const char *regrev)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			memset(cmd, 0, 32);
@@ -783,6 +789,10 @@ GetPhyStatus(void)
 		/* WAN L1 L2 L3 L4 */
 		ports[0]=0; ports[1]=1; ports[2]=2; ports[3]=3; ports[4]=4;
 		break;
+	case MODEL_R6300V2:
+		/* WAN L1 L2 L3 L4 */
+		ports[0]=4; ports[1]=0; ports[2]=1; ports[3]=2; ports[4]=3;
+		break;
 	case MODEL_RTAC5300:
 		/* WAN L1 L2 L3 L4 */
 		ports[0]=3; ports[1]=2; ports[2]=1; ports[3]=0; ports[4]=4;
@@ -958,6 +968,7 @@ setAllLedOn(void)
 		case MODEL_RTAC88U:
 		case MODEL_RTAC3100:
 		case MODEL_EA6900:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		case MODEL_WS880:
 		{
@@ -1120,6 +1131,7 @@ setAllLedOn(void)
 			eval("et", "robowr", "0", "0x1a", "0x01e0");
 			break;
 		}
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_ON);
@@ -1471,6 +1483,7 @@ setAllLedOff(void)
 			eval("et", "robowr", "0", "0x1a", "0x01e0");
 			break;
 		}
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_OFF);
@@ -1640,6 +1653,7 @@ setATEModeLedOn(void){
 			eval("et", "robowr", "0", "0x1a", "0x01e0");
 			break;
 		}
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_ON);
@@ -1794,6 +1808,7 @@ getMAC_5G(void)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			puts(nvram_safe_get("pci/2/1/macaddr"));
@@ -1888,6 +1903,7 @@ getCountryCode_2G(void)
 		case MODEL_WS880:
 			puts(nvram_safe_get("0:ccode"));
 			break;
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			puts(nvram_safe_get("pci/1/1/ccode"));
 			break;
@@ -1924,6 +1940,7 @@ getCountryCode_5G(void)
 		case MODEL_WS880:
 			puts(nvram_safe_get("1:ccode"));
 			break;
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			puts(nvram_safe_get("pci/2/1/ccode"));
 			break;
@@ -1971,6 +1988,7 @@ getRegrev_2G(void)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			puts(nvram_safe_get("pci/1/1/regrev"));
@@ -2018,6 +2036,7 @@ getRegrev_5G(void)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 		{
 			puts(nvram_safe_get("pci/2/1/regrev"));
@@ -3240,7 +3259,8 @@ reset_countrycode_2g(void)
 		case MODEL_WS880:
 			strcpy(country_code_str, "0:ccode");
 			break;
-
+			
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			strcpy(country_code_str, "pci/1/1/ccode");
 			break;
@@ -3284,6 +3304,7 @@ reset_countrycode_5g(void)
 			strcpy(country_code_str, "1:ccode");
 			break;
 
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			strcpy(country_code_str, "pci/2/1/ccode");
 			break;
@@ -3336,6 +3357,7 @@ reset_countryrev_2g(void)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			strcpy(country_rev_str, "pci/1/1/regrev");
 			break;
@@ -3390,6 +3412,7 @@ reset_countryrev_5g(void)
 
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
+		case MODEL_R6300V2:
 		case MODEL_R7000:
 			strcpy(country_rev_str, "pci/2/1/regrev");
 			break;
