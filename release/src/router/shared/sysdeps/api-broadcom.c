@@ -620,7 +620,7 @@ void set_radio(int on, int unit, int subunit)
 			}
 #else
 			nvram_set("led_5g", "1");
-			if (nvram_get_int("led_disable")==0)
+			if (nvram_get_int("AllLED"))
 				led_control(LED_5G, LED_ON);
 #endif
 		}
@@ -636,7 +636,7 @@ void set_radio(int on, int unit, int subunit)
 		if (on) eval("wl", "-i", nvram_safe_get(wl_nvname("ifname", unit, 0)), "bss", "-C", tmp, "up");
 		else eval("wl", "-i", nvram_safe_get(wl_nvname("ifname", unit, 0)), "bss", "-C", tmp, "down");
 
-		if (nvram_get_int("led_disable")==1) {
+		if (nvram_get_int("AllLED")==0) {
 			led_control(LED_2G, LED_OFF);
 			led_control(LED_5G, LED_OFF);
 		}
@@ -662,7 +662,7 @@ void set_radio(int on, int unit, int subunit)
 	}
 #endif
 
-	if (nvram_get_int("led_disable")==1) {
+	if (nvram_get_int("AllLED")==0) {
 		led_control(LED_2G, LED_OFF);
 		led_control(LED_5G, LED_OFF);
 	}

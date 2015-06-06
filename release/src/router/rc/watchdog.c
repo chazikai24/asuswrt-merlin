@@ -206,7 +206,7 @@ void led_control_normal(void)
 
 #if defined(RTCONFIG_LED_BTN) && defined(RTAC87U)
 	LED_switch_count = nvram_get_int("LED_switch_count");
-	if(nvram_get_int("led_disable") == 1) return;
+	if(nvram_get_int("AllLED") == 0) return;
 #endif
 
 	led_control(LED_POWER, LED_ON);
@@ -341,13 +341,13 @@ void btn_check_vtx(void)
 
 		if (LED_status_changed == 0)
 		{
-			if (!nvram_get_int("led_disable"))
+			if (nvram_get_int("AllLED"))
 			{
-				nvram_set_int("led_disable", 1);
+				nvram_set_int("AllLED", 0);
 			}
 			else
 			{
-				nvram_set_int("led_disable", 0);
+				nvram_set_int("AllLED", 1);
 			}
 			setup_leds();
 			LED_status_changed = 1;
@@ -712,12 +712,12 @@ void btn_check(void)
 
 		if(BTN_pressed_count > WPS_LED_WAIT_COUNT && LED_status_changed == 0){
 			LED_status_changed = 1;
-			LED_status_on = 1 - nvram_get_int("led_disable");
+			LED_status_on = nvram_get_int("AllLED");
 
 			if(LED_status_on)
-				nvram_set_int("led_disable", 1);
+				nvram_set_int("AllLED", 0);
 			else
-				nvram_set_int("led_disable", 0);
+				nvram_set_int("AllLED", 1);
 			LED_status_on = !LED_status_on;
 
 			if(LED_status_on){
@@ -810,9 +810,9 @@ void btn_check(void)
 #elif defined(RTAC3200) || defined(RTAC88U) || defined(RTAC3100) || defined(RTAC5300) 
 		if (LED_status_on)
 #endif
-			nvram_set_int("led_disable", 0);
+			nvram_set_int("AllLED", 1);
 		else
-			nvram_set_int("led_disable", 1);
+			nvram_set_int("AllLED", 0);
 #if defined(RTAC68U)
 		if (LED_status == LED_status_on)
 #elif defined(RTAC3200) || defined(RTAC88U) || defined(RTAC3100) || defined(RTAC5300) 
@@ -894,12 +894,12 @@ void btn_check(void)
 
 	if(BTN_pressed_count >= LED_switch_count && LED_status_changed == 0){
 		LED_status_changed = 1;
-		LED_status_on = 1 - nvram_get_int("led_disable");
+		LED_status_on = nvram_get_int("AllLED");
 
 		if(LED_status_on)
-			nvram_set_int("led_disable", 1);
+			nvram_set_int("AllLED", 0);
 		else
-			nvram_set_int("led_disable", 0);
+			nvram_set_int("AllLED", 1);
 		LED_status_on = !LED_status_on;
 
 		if(LED_status_on){
@@ -1503,7 +1503,7 @@ void fake_etlan_led(void)
 	static int status = -1;
 	static int status_old;
 
-	if(nvram_get_int("led_disable"))
+	if(!nvram_get_int("AllLED"))
 		return;
 	
 	if(!GetPhyStatus()) {
@@ -1602,7 +1602,7 @@ void fake_wl_led_2g(void)
 		}
 		else blink_2g = 0;
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_2G, LED_ON);
 	}
@@ -1622,7 +1622,7 @@ void fake_wl_led_2g(void)
 			{
 				if (status
 #ifdef RTCONFIG_LED_BTN
-				&& !nvram_get_int("led_disable")
+				&& nvram_get_int("AllLED")
 #endif
 				)
 					led_control(LED_2G, LED_ON);
@@ -1631,7 +1631,7 @@ void fake_wl_led_2g(void)
 			}
 		}
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_2G, LED_ON);
 	}
@@ -1691,7 +1691,7 @@ void fake_wl_led_5g(void)
 		}
 		else blink_5g = 0;
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_5G, LED_ON);
 	}
@@ -1714,7 +1714,7 @@ void fake_wl_led_5g(void)
 			{
 				if (status
 #ifdef RTCONFIG_LED_BTN
-				&& !nvram_get_int("led_disable")
+				&& nvram_get_int("AllLED")
 #endif
 				)
 					led_control(LED_5G, LED_ON);
@@ -1728,14 +1728,14 @@ void fake_wl_led_5g(void)
 			}
 			else {
 #ifdef RTCONFIG_LED_BTN
-				if (!nvram_get_int("led_disable"))
+				if (nvram_get_int("AllLED"))
 #endif
 				led_control(LED_5G, LED_ON);
 			}
 #endif
 		}
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_5G, LED_ON);
 	}
@@ -2841,7 +2841,7 @@ void watchdog(int sig)
 #endif
 	if(nvram_match("asus_mfg", "0")
 #if defined(RTCONFIG_LED_BTN) || defined(RTCONFIG_WPS_ALLLED_BTN)
-		&& !nvram_get_int("led_disable")
+		&& nvram_get_int("AllLED")
 #endif
 	)
 	

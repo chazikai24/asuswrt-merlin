@@ -953,7 +953,7 @@ void start_wl(void)
 		}
 #else
 		nvram_set("led_5g", "1");
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 			led_control(LED_5G, LED_ON);
 #endif
 	}
@@ -967,7 +967,7 @@ void start_wl(void)
 	if (nvram_match("wl0_radio", "1"))
 	{
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_2G, LED_ON);
 	}
@@ -983,7 +983,7 @@ void start_wl(void)
 #endif
 	)
 #ifdef RTCONFIG_LED_BTN
-		&& !nvram_get_int("led_disable")
+		&& nvram_get_int("AllLED")
 #endif
 	)
 		led_control(LED_TURBO, LED_ON);
@@ -3949,7 +3949,7 @@ void restart_wl(void)
 		}
 #else
 		nvram_set("led_5g", "1");
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 			led_control(LED_5G, LED_ON);
 #endif
 	}
@@ -3962,7 +3962,7 @@ void restart_wl(void)
 	if (nvram_match("wl0_radio", "1"))
 	{
 #ifdef RTCONFIG_LED_BTN
-		if (!nvram_get_int("led_disable"))
+		if (nvram_get_int("AllLED"))
 #endif
 		led_control(LED_2G, LED_ON);
 	}
@@ -3978,7 +3978,7 @@ void restart_wl(void)
 #endif
 	)
 #ifdef RTCONFIG_LED_BTN
-		&& !nvram_get_int("led_disable")
+		&& nvram_get_int("AllLED")
 #endif
 	)
 		led_control(LED_TURBO, LED_ON);
@@ -4221,7 +4221,7 @@ void restart_wireless(void)
 	nvram_set_int("wlready", 1);
 
 #ifdef RTAC87U
-	if(nvram_get_int("led_disable") == 1) setAllLedOff();
+	if(nvram_get_int("AllLED") == 0) setAllLedOff();
 #endif
 
 	file_unlock(lock);

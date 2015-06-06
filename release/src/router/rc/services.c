@@ -6854,7 +6854,7 @@ void setup_leds()
 
 	model = get_model();
 
-	if (nvram_get_int("led_disable") == 1) {
+	if (nvram_get_int("AllLED") == 0) {
 		if ((model == MODEL_RTAC56U) || (model == MODEL_RTAC56S) || (model == MODEL_RTAC68U) || (model == MODEL_EA6900) || (model == MODEL_R6300V2)  || (model == MODEL_R7000) || (model == MODEL_WS880) || (model == MODEL_RTAC87U) || (model == MODEL_RTAC3200)) {
 			setAllLedOff();
 			if (model == MODEL_RTAC87U)
@@ -6896,7 +6896,7 @@ void setup_leds()
 #endif
 		)
 #ifdef RTCONFIG_LED_BTN
-			&& !nvram_get_int("led_disable")
+			&& nvram_get_int("AllLED")
 #endif
 		)
 			led_control(LED_TURBO, LED_ON);
