@@ -967,10 +967,6 @@ setAllLedOn(void)
 		case MODEL_RTAC5300:
 		case MODEL_RTAC88U:
 		case MODEL_RTAC3100:
-		case MODEL_EA6900:
-		case MODEL_R6300V2:
-		case MODEL_R7000:
-		case MODEL_WS880:
 		{
 #if defined(RTAC68U) || defined(RTAC88U) || defined(RTAC3100) || defined(RTAC5300) 
 			led_control(LED_USB, LED_ON);
@@ -1564,6 +1560,7 @@ setATEModeLedOn(void){
 		case MODEL_RTAC3200:
 		{
 			led_control(LED_WPS, LED_ON);
+			break;
 		}
 		case MODEL_RPAC68U:
 		case MODEL_RTAC5300:

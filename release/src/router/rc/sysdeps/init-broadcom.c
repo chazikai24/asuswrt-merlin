@@ -2760,7 +2760,6 @@ int set_wltxpower()
 		//&& (model != MODEL_RTAC5300)
 		//&& (model != MODEL_RTAC3100)
 		//&& (model != MODEL_RTAC88U)
-		)
 	{
 		dbG("\n\tDon't do this!\n\n");
 		return -1;
