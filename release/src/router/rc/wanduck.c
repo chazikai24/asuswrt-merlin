@@ -2730,7 +2730,7 @@ _dprintf("wanduck(%d) 6: conn_state %d, conn_state_old %d, conn_changed_state %d
                         if(rule_setup == 1 && !isFirstUse){
 				if (nvram_match("led_disable", "0")) {
 #if defined(RTCONFIG_WPS_ALLLED_BTN)
-					if(nvram_match("AllLED", "1"))
+					if(!nvram_get_int("led_disable")){
 						led_control(LED_WAN, LED_ON);
 					else
 						led_control(LED_WAN, LED_OFF);

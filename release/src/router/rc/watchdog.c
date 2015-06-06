@@ -713,9 +713,9 @@ void btn_check(void)
 			LED_status_on = 1 - nvram_get_int("led_disable");
 
 			if(LED_status_on)
-				nvram_set_int("AllLED", 0);
+				nvram_set_int("led_disable", 1);
 			else
-				nvram_set_int("AllLED", 1);
+				nvram_set_int("led_disable", 0);
 			LED_status_on = !LED_status_on;
 
 			if(LED_status_on){
@@ -1501,7 +1501,7 @@ void fake_etlan_led(void)
 	static int status = -1;
 	static int status_old;
 
-	if(nvram_match("AllLED", "0"))
+	if(nvram_get_int("led_disable"))
 		return;
 	
 	if(!GetPhyStatus()) {
