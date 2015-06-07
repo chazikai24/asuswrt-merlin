@@ -2995,7 +2995,7 @@ ifeq ($(RTCONFIG_EMF),y)
 endif
 
 igs$(BCMEX)$(DPI)$(EX7)-clean:
-	-@$(MAKE) -C emf$(BCMEX)$(EX7)/igsconf clean
+	-@$(MAKE) -C emf$(BCMEX)$(DPI)$(EX7)/igsconf clean
 
 ebtables: kernel_header dummy
 	$(MAKE) -C ebtables CC=$(CC) LD=$(LD) \
