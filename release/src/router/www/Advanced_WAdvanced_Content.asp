@@ -247,7 +247,7 @@ function initial(){
 			based_modelid == "RT-AC87U" ||
 			based_modelid == "RT-AC55U" || based_modelid == "RT-AC55UHP" || based_modelid == "4G-AC55U" ||
 			based_modelid == "RT-AC56S" || based_modelid == "RT-AC56U" || 
-			based_modelid == "EA6900" || based_modelid == "R6300V2"  based_modelid == "R7000" || based_modelid == "WS880" ||
+			based_modelid == "EA6900" || based_modelid == "R6300V2" || based_modelid == "R7000" || based_modelid == "WS880" ||
 			based_modelid == "RT-AC68U" || based_modelid == "RT-AC68U_V2" || based_modelid == "DSL-AC68U")
 		{
 			inputCtrl(document.form.usb_usb3, 1);

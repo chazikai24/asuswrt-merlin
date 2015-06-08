@@ -569,7 +569,7 @@ if(bwdpi_support){
 	tablink[13] = new Array("");
 	tablink[14] = new Array("");
 }
-tablink[15] = new Array("", "Tools_Sysinfo.asp", "Tools_OtherSettings.asp", "Tools_RunCmd.asp");
+tablink[15] = new Array("", "Tools_Sysinfo.asp", "Tools_OtherSettings.asp");
 
 // Level 2 Menu
 menuL2_title = new Array("", "<#menu5_1#>", "Passpoint", "<#menu5_2#>", "<#menu5_3#>", "<#menu5_4#>", "IPv6", "VPN", "<#menu5_5#>", "<#menu5_6#>", "<#System_Log#>", "<#Network_Tools#>");
