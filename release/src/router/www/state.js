@@ -544,7 +544,7 @@ else{
 	tabtitle[13] = new Array("");
 	tabtitle[14] = new Array("");
 }
-tabtitle[15] = new Array("", "Sysinfo", "Other Settings", "Run Cmd");
+tabtitle[15] = new Array("", "Sysinfo", "Other Settings");
 
 var tablink = new Array();
 tablink[0] = new Array("", "Advanced_Wireless_Content.asp", "Advanced_WWPS_Content.asp", "Advanced_WMode_Content.asp", "Advanced_ACL_Content.asp", "Advanced_WSecurity_Content.asp", "Advanced_WAdvanced_Content.asp", "Advanced_Wireless_Survey.asp");
