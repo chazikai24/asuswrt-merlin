@@ -218,7 +218,7 @@ if( (get_model()==MODEL_RTAC56U || get_model()==MODEL_RTAC56S || get_model()==MO
 /* */
 void start_jffs2(void)
 {
-	if (!nvram_match("jffs2_on", "1")) {
+	if (!nvram_match("jffs2_enable", "1")) {
 		notice_set("jffs", "");
 		return;
 	}
