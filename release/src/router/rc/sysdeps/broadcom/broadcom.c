@@ -791,7 +791,7 @@ GetPhyStatus(void)
 		break;
 	case MODEL_R6300V2:
 		/* WAN L1 L2 L3 L4 */
-		ports[0]=4; ports[1]=0; ports[2]=1; ports[3]=2; ports[4]=3;
+		ports[0]=4; ports[1]=3; ports[2]=2; ports[3]=1; ports[4]=0;
 		break;
 	case MODEL_RTAC5300:
 		/* WAN L1 L2 L3 L4 */

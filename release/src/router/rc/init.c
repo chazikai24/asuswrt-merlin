@@ -3654,8 +3654,9 @@ int init_nvram(void)
 		dirty |= check_nv("wl1_leddc", "0x640000");
 		dirty |= check_nv("wl0_ifname", "eth1");
 		dirty |= check_nv("wl1_ifname", "eth2");
-		dirty |= check_nv("vlan1ports", "0 1 2 3 5*");
-		dirty |= check_nv("vlan2ports", "4 5u");
+		/* Invalid,vlanports control by "init-broadcom.c" */
+		//dirty |= check_nv("vlan1ports", "0 1 2 3 5*");
+		//dirty |= check_nv("vlan2ports", "4 5u");
 		if (dirty) {
 			nvram_commit();
 			sync();

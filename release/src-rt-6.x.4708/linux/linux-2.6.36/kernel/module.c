@@ -990,7 +990,7 @@ static int check_version(Elf_Shdr *sechdrs,
 
 		if (versions[i].crc == maybe_relocated(*crc, crc_owner))
 			return 1;
-		DEBUGP("Found checksum %lX vs module %lX\n",
+		printk("Found checksum %lX vs module %lX\n",
 		       maybe_relocated(*crc, crc_owner), versions[i].crc);
 		goto bad_version;
 	}
@@ -1000,9 +1000,12 @@ static int check_version(Elf_Shdr *sechdrs,
 	return 0;
 
 bad_version:
-	printk("%s: disagrees about version of symbol %s\n",
-	       mod->name, symname);
-	return 0;
+	//printk("%s: disagrees about version of symbol %s\n",
+	//       mod->name, symname);
+
+        //added by jannson
+	return try_to_force_load(mod, symname) == 0;
+	//return 0;
 }
 
 static inline int check_modstruct_version(Elf_Shdr *sechdrs,

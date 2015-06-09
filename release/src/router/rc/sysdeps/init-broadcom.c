@@ -991,7 +991,7 @@ void generate_switch_para(void)
 
 		case MODEL_R6300V2:
 		{				/* WAN L1 L2 L3 L4 CPU */	/*vision: WAN L1 L2 L3 L4 */
-			const int ports[SWPORT_COUNT] = { 4, 0, 1, 2, 3, 5 };
+			const int ports[SWPORT_COUNT] = { 4, 3, 2, 1, 0, 5 };
 			int wancfg = (!nvram_match("switch_wantag", "none")&&!nvram_match("switch_wantag", "")) ? SWCFG_DEFAULT : cfg;
 
 			wan_phyid = ports[0];	// record the phy num of the wan port on the case
