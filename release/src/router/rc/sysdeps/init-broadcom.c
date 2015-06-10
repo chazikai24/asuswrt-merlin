@@ -1501,7 +1501,7 @@ void generate_switch_para(void)
 			char *hw_name = "et1";
 #else
 			/* WAN L1 L2 L3 L4 CPU */	/*vision: WAN L1 L2 L3 L4 */
-			const int ports[SWPORT_COUNT] = { 4, 0, 1, 2, 3, 5 };
+			const int ports[SWPORT_COUNT] = { 0, 1, 2, 3, 4, 5 };
 			char *hw_name = "et0";
 #endif
 			int wancfg = (!nvram_match("switch_wantag", "none")&&!nvram_match("switch_wantag", "")) ? SWCFG_DEFAULT : cfg;
@@ -1600,7 +1600,6 @@ void generate_switch_para(void)
 #endif
 			break;
 		}
-
 		case MODEL_RTN66U:
 		case MODEL_RTAC66U:
 		{				/* WAN L1 L2 L3 L4 CPU */
