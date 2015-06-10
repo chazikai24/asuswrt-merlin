@@ -1,7 +1,7 @@
 include ../common.mak
 include $(SRCBASE)/.config
 
-CFLAGS += -Os -Wall $(EXTRACFLAGS) -fPIC
+CFLAGS += -Os -Wall -DRTAC68U $(EXTRACFLAGS) -fPIC
 CFLAGS += -I. -I$(TOP)/shared -I$(SRCBASE)/include
 ifneq ($(RTCONFIG_BCMARM),y)
 CFLAGS += -I$(TOP)/kernel_header/include
