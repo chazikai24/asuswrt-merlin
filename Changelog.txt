@@ -2059,4 +2059,3 @@ good amount of the limited available nvram. ***
 3.0.0.3.108.1 (5-Apr-2012):
    - Initial release.
 
->>>>>>> Updated documentation
