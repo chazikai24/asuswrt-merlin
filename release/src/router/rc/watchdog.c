@@ -1879,7 +1879,11 @@ void led_check(void)
                         led_control(LED_5G, LED_OFF);
                 else
 #endif
-												fake_wl_led_5g();
+#if defined(R6300V2)
+			led_control(LED_5G, LED_ON);
+#else
+			fake_wl_led_5g();
+#endif
 	}
 #endif
 	

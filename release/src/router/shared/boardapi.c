@@ -449,9 +449,11 @@ int do_led_control(int which, int mode)
 	if (use_gpio & GPIO_ACTIVE_LOW)
 		v ^= 1;
 
+#if !defined(R6300V2)
 	if (mode == LED_OFF) {
 		stop_bled(use_gpio);
 	}
+#endif
 
 	set_gpio(gpio_nr, v);
 
@@ -463,15 +465,17 @@ int do_led_control(int which, int mode)
 #endif
 
 #if defined(R6300V2)
-	if (gpio_nr == 1) { // LED_POWER
-		set_gpio(3, v);
-		set_gpio(2, v ^ 1);
+	if (gpio_nr == 2) { // LED_POWER
+		set_gpio(2, v);
+		set_gpio(3, v ^ 1);
 	}
 #endif
 
+#if !defined(R6300V2)
 	if (mode == LED_ON) {
 		start_bled(use_gpio);
 	}
+#endif
 
 	return 0;
 }

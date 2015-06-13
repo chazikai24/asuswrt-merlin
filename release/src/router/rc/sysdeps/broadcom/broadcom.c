@@ -1147,6 +1147,16 @@ setAllLedOn(void)
 			break;
 		}
 		case MODEL_R6300V2:
+		{
+			led_control(LED_USB, LED_ON);
+			led_control(LED_USB3, LED_ON);
+			led_control(LED_WAN, LED_ON);
+			led_control(LED_WAN_RED, LED_ON);
+			led_control(LED_POWER, LED_ON);
+			led_control(LED_2G, LED_ON);
+			led_control(LED_5G, LED_ON);
+			break;
+		}
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_ON);
@@ -1501,6 +1511,16 @@ setAllLedOff(void)
 			break;
 		}
 		case MODEL_R6300V2:
+		{
+			led_control(LED_USB, LED_OFF);
+			led_control(LED_USB3, LED_OFF);
+			led_control(LED_WAN, LED_OFF);
+			led_control(LED_WAN_RED, LED_OFF);
+			led_control(LED_POWER, LED_OFF);
+			led_control(LED_2G, LED_OFF);
+			led_control(LED_5G, LED_OFF);
+			break;
+		}
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_OFF);
@@ -1688,6 +1708,16 @@ setATEModeLedOn(void){
 			break;
 		}
 		case MODEL_R6300V2:
+		{
+			led_control(LED_USB, LED_ON);
+			led_control(LED_USB3, LED_ON);
+			led_control(LED_WAN, LED_ON);
+			led_control(LED_WAN_RED, LED_ON);
+			led_control(LED_POWER, LED_ON);
+			led_control(LED_2G, LED_ON);
+			led_control(LED_5G, LED_ON);
+			break;
+		}
 		case MODEL_R7000:
 		{
 			led_control(LED_USB, LED_ON);

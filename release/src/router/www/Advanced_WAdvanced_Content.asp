@@ -1149,16 +1149,16 @@ function show_wifi_schedule(){
 					<tr id="wl_rf_enable">
 			  			<th><a class="hintstyle" href="javascript:void(0);" onClick="openHint(3, 1);"><#WLANConfig11b_x_RadioEnable_itemname#></a></th>
 			  			<td>
-			  				<input type="radio" value="1" name="wl_radio" class="input" onClick="control_TimeField(1);" <% nvram_match("wl_radio", "1", "checked"); %>><#checkbox_Yes#>
-			    			<input type="radio" value="0" name="wl_radio" class="input" onClick="control_TimeField(0);" <% nvram_match("wl_radio", "0", "checked"); %>><#checkbox_No#>
+			  				<input type="radio" value="1" name="wl_radio" class="input" onClick="" <% nvram_match("wl_radio", "1", "checked"); %>><#checkbox_Yes#>
+			    			<input type="radio" value="0" name="wl_radio" class="input" onClick="" <% nvram_match("wl_radio", "0", "checked"); %>><#checkbox_No#>
 			  			</td>
 					</tr>
 
 					<tr id="wl_sched_enable">
 			  			<th><a class="hintstyle" href="javascript:void(0);" onClick="openHint(3, 23);"><#WLANConfig11b_x_SchedEnable_itemname#></a></th>
 			  			<td>
-			  				<input type="radio" value="1" name="wl_timesched" class="input" onClick="control_TimeField();return change_common_radio(this, 'WLANConfig11b', 'wl_timesched', '1');" <% nvram_match("wl_timesched", "1", "checked"); %>><#checkbox_Yes#>
-			    			<input type="radio" value="0" name="wl_timesched" class="input" onClick="control_TimeField();return change_common_radio(this, 'WLANConfig11b', 'wl_timesched', '0')" <% nvram_match("wl_timesched", "0", "checked"); %>><#checkbox_No#>
+			  				<input type="radio" value="1" name="wl_timesched" class="input" onClick="return change_common_radio(this, 'WLANConfig11b', 'wl_timesched', '1');" <% nvram_match("wl_timesched", "1", "checked"); %>><#checkbox_Yes#>
+			    			<input type="radio" value="0" name="wl_timesched" class="input" onClick="return change_common_radio(this, 'WLANConfig11b', 'wl_timesched', '0')" <% nvram_match("wl_timesched", "0", "checked"); %>><#checkbox_No#>
 							<span style="padding-left:20px;cursor:pointer;text-decoration:underline" onclick="show_wifi_schedule();">Time Setting</span>
 						</td>
 					</tr>

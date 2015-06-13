@@ -2104,7 +2104,7 @@ bcm_robo_enable_switch(robo_info_t *robo)
 {
 	int i, max_port_ind, ret = 0;
 	uint8 val8;
-#if defined(R7000) || defined(R6300V2)
+#if defined(R7000)
 	uint16 val16;
 #endif
 
@@ -2307,7 +2307,7 @@ bcm_robo_enable_switch(robo_info_t *robo)
 #ifdef RGMII_BCM_FA
 	bcm_robo_enable_rgmii_port(robo);
 #endif
-#if defined(R7000) || defined(R6300V2)
+#if defined(R7000)
 	val16 = 0x3000;
 	robo->ops->write_reg(robo, PAGE_CTRL, 0x10, &val16, sizeof(val16));
 	val16 = 0x78;

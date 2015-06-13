@@ -1738,7 +1738,7 @@ void ether_led()
 		eval("et", "robowr", "0", "0x18", "0x01ff");
 		eval("et", "robowr", "0", "0x1a", "0x01ff");
 		break;
-	case MODEL_R6300V2:
+	//case MODEL_R6300V2:
 	case MODEL_R7000:
 		eval("et", "robowr", "0", "0x10", "0x3000");
 		eval("et", "robowr", "0", "0x12", "0x78");
