@@ -3859,14 +3859,6 @@ int init_nvram(void)
 			nvram_set("wl1_reg_mode", "off");
 		}
 
-		if (!nvram_get("pci/1/1/rpcal2g")) {
-			nvram_set("pci/1/1/rpcal2g", "0x5f7");
-			nvram_set("pci/2/1/rpcal5gb0", "0x610c");
-			nvram_set("pci/2/1/rpcal5gb1", "0x6a09");
-			nvram_set("pci/2/1/rpcal5gb2", "0x5eff");
-			nvram_set("pci/2/1/rpcal5gb3", "0x700c");
-		}
-		
 		nvram_set("vlan1hwname", "et0");
 		nvram_set("lan_ifname", "br0");
 		nvram_set("landevs", "vlan1 wl0 wl1");

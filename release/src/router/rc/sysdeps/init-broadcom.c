@@ -4922,7 +4922,7 @@ int set_wltxpower()
 				break;
 
 			case MODEL_EA6900:
-			case MODEL_R6300V2:
+			//case MODEL_R6300V2:
 			case MODEL_R7000:
 			case MODEL_WS880:
 				if (set_wltxpower_once) {
