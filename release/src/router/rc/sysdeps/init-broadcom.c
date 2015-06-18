@@ -5680,8 +5680,8 @@ void generate_wl_para(int unit, int subunit)
 		sprintf(tmp2, "%d", nvram_get_int(strcat_r(prefix, "pmk_cache", tmp)) * 60);
 		nvram_set(strcat_r(prefix, "net_reauth", tmp), tmp2);
 
-		if (nvram_match(strcat_r(prefix, "nband", tmp), "1")) {
-			if (	((get_model() == MODEL_RTAC68U || get_model() == MODEL_EA6900 || get_model() == MODEL_R6300V2 || get_model() == MODEL_R7000 || get_model() == MODEL_WS880 || get_model() == MODEL_RPAC68U || get_model() == MODEL_DSLAC68U) &&
+		if (nvram_match(strcat_r(prefix, "nband", tmp), "1") && !nvram_match("ATEMODE", "1")) {
+			if (	((get_model() == MODEL_RTAC68U || get_model() == MODEL_RPAC68U || get_model() == MODEL_DSLAC68U || get_model() == MODEL_EA6900 || get_model() == MODEL_R6300V2 || get_model() == MODEL_R7000 || get_model() == MODEL_WS880) &&
 				(nvram_match(strcat_r(prefix, "reg_mode", tmp), "off") || nvram_match(strcat_r(prefix, "reg_mode", tmp), "d")) &&
 			      ((nvram_match(strcat_r(prefix, "country_code", tmp), "EU") &&
 				nvram_match(strcat_r(prefix, "country_rev", tmp), "13")) ||
