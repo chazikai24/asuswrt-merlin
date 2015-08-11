@@ -1046,6 +1046,8 @@ void bcmvlan_models(int model, char *vlan)
 	case MODEL_R7000:
 	case MODEL_R8000:
 	case MODEL_WS880:
+	case MODEL_RTAC1200G:
+	case MODEL_RTAC1200GP:
 		strcpy(vlan, "vlan1");
 		break;
 	case MODEL_RTN53:
